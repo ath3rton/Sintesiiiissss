@@ -17,6 +17,16 @@ return [
     'view' => 'View Project',
 
     //sidebar
-
     'controlpanel' => 'Panel de Control',
+
+    // inversio
+    'quantity' => 'Diagrama de Aportaciones',
+    'achieved' => 'Acumulado',
+    'target' => 'Objetivo',
+    'company' => 'Nombre Empresa',
+    'proddesc' => 'Descripcion del Proyecto',
+    'details' => 'Detalles',
+    'location' => 'Localidad',
+    'contribution' => 'Contribuciones',
+    'contributed' => 'Contribuido',
 ];

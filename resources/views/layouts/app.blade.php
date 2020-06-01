@@ -27,15 +27,16 @@
     <div class="d-flex" id="wrapper app">
 
     <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">{{__('messages.controlpanel')}} </div>
+    <div class="bpcolor border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading scolor">{{__('messages.controlpanel')}} </div>
+      <hr class="borderscolor">
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Dashboard</a>
+        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Events</a>
+        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Status</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -51,7 +52,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="container">
                 <a class="navbar-brand nlogo" href="{{ url('/') }}">
-                    €$CINss
+                    €$CIN
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -113,7 +114,6 @@
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>

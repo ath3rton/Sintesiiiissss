@@ -1,6 +1,6 @@
 // Fonts
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #222831;
+$font-stack:     sans-serif;
+$primary-color: #353b42;
 $secondary-color : #00adb5;
 $tertiary-color: #eeeeee;
 $green-color: #43a55b;
@@ -12,8 +12,18 @@ $green-color: #43a55b;
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import 'home';
+@import 'projview.scss';
 
 
+.pcolor{color:$primary-color;}
+.scolor{color:$secondary-color;}
+.tcolor{color: $green-color;}
+.bpcolor{background-color: $primary-color;}
+.bscolor{background-color: $secondary-color;}
+.btcolor{background-color: $green-color;}
+.borderpcolor{border-color: $primary-color;}
+.borderscolor{border-color: $secondary-color;}
+.bordertcolor{border-color: $green-color;}
 
 
 @font-face {
@@ -25,8 +35,6 @@ $green-color: #43a55b;
   src: url('/fonts/library/Library3am.otf');
 }
 body {
-    
-    font: 100% $font-stack;
     color: $primary-color;
 }
 // CSS PARA EL NAVBAR
@@ -51,14 +59,21 @@ body {
   padding: 16px;
   text-decoration: none;
 }
- 
+.list-group-item-action:hover{
+	background-color: $secondary-color;
+	color:$tertiary-color;
+}
+.list-group-item {
+	border-color: rgba($secondary-color, .3);;
+}
+
 .sidebar a.active {
-  background-color: $green-color;
+  background-color: $secondary-color;
   color: white;
 }
 
 .sidebar a:hover:not(.active) {
-  background-color: #555;
+  background-color: $secondary-color;
   color: white;
 }
 

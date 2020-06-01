@@ -91,9 +91,10 @@ Route::get('projecte/{id}/{emp}', function($id,$emp) {
     return view('projectView',['proj' => $proj,
                                'emp' => $emp]);
 });
-
-
+Route::get('getops/{id}','AjaxController@index');
+Route::get('getopsus/{id}','AjaxController@indexus');
 //---
+
 Route::middleware('auth:api')
     ->get('/user', function (Request $request) {
         return $request->user();

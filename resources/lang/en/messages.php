@@ -20,4 +20,15 @@ return [
 
     //sidebar
     'controlpanel' => 'Controll Panel',
+
+    //inveriones
+    'quantity' => 'Contribution diagram',
+    'achieved' => 'Achieved',
+    'target' => 'Target',
+    'company' => 'Company Name',
+    'proddesc' => 'Project Description',
+    'details' => 'Details',
+    'location' => 'Location',
+    'contribution' => 'Contributions',
+    'contributed' => 'Contributed',
 ];

@@ -10976,6 +10976,55 @@ a.text-dark:focus {
   overflow: hidden;
 }
 
+.description {
+  height: auto;
+  overflow: hidden;
+}
+
+legend {
+  width: auto;
+  /* Or auto */
+  padding: 0 10px;
+  /* To give a bit of padding on the left and right */
+  border-bottom: none;
+}
+
+.pcolor {
+  color: #353b42;
+}
+
+.scolor {
+  color: #00adb5;
+}
+
+.tcolor {
+  color: #43a55b;
+}
+
+.bpcolor {
+  background-color: #353b42;
+}
+
+.bscolor {
+  background-color: #00adb5;
+}
+
+.btcolor {
+  background-color: #43a55b;
+}
+
+.borderpcolor {
+  border-color: #353b42;
+}
+
+.borderscolor {
+  border-color: #00adb5;
+}
+
+.bordertcolor {
+  border-color: #43a55b;
+}
+
 @font-face {
   font-family: horizon;
   src: url("/fonts/horizon/Horizon.otf");
@@ -10987,8 +11036,7 @@ a.text-dark:focus {
 }
 
 body {
-  font: 100% Helvetica, sans-serif;
-  color: #222831;
+  color: #353b42;
 }
 
 .nlogo {
@@ -11014,13 +11062,22 @@ body {
   text-decoration: none;
 }
 
+.list-group-item-action:hover {
+  background-color: #00adb5;
+  color: #eeeeee;
+}
+
+.list-group-item {
+  border-color: rgba(0, 173, 181, 0.3);
+}
+
 .sidebar a.active {
-  background-color: #43a55b;
+  background-color: #00adb5;
   color: white;
 }
 
 .sidebar a:hover:not(.active) {
-  background-color: #555;
+  background-color: #00adb5;
   color: white;
 }
 

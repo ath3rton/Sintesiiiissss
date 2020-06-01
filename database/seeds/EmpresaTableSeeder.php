@@ -34,5 +34,12 @@ class EmpresaTableSeeder extends Seeder
                                'actiu'=> true,
                                'emp_id'=> $i]);
         }
+        for ($i = 0; $i < 500; $i++) {
+            operacions::create([
+                'quantitat' => rand(100, 1),
+                'user' => rand(29, 2),
+                'projecte' => rand(15, 1)
+            ]);
+        }
     }
 }
