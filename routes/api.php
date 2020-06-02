@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\projectes;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,8 +28,13 @@ Route::post('logout', 'Auth\LoginController@logout');
 //crud projectes
 Route::get('projectes', 'ProjectesController@index');
 Route::get('projectes/{projecte}', 'ProjectesController@show');
-Route::post('projectes', 'ProjectesController@store');
-Route::put('projectes/{projecte}', 'ProjectesController@update');
+Route::post('projadd', 'ProjectesController@store')->name('projadd');
+Route::put('projectes/{id}', function(Request $request, $id) {
+    $article = projectes::findOrFail($id);
+    $article->update($request->all());
+    return $article;
+})->name('projmodficar');
+
 Route::delete('projectes/{projecte}', 'ProjectesController@delete');
 
 // crud empresa

@@ -29,4 +29,15 @@ return [
     'location' => 'Localidad',
     'contribution' => 'Contribuciones',
     'contributed' => 'Contribuido',
+    'createproj' => 'Crear Proyecto',
+    'modproj' =>  'Modificar Proyecto',
+
+    // PROJ related
+    'projname' => 'Nombre Proyecto',
+    'description' => 'Descripcion',
+    'fraction' => 'Fraccion',
+    'create' => 'Crear',
+    'modify' => 'Modificar',
+    'delete' => 'Borrar',
+    'projvalid' => 'Validar Proyectos',
 ];

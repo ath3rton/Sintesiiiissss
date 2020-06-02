@@ -43,11 +43,8 @@
                         <div class="row"> 
                             <table id="conts" class="table">
                                 <tr>
-                                    <td>{{__('messages.username')}}</td>
-                                    <td>{{__('messages.contributed')}}</td>
-                                </tr>
-                                <tr>
-
+                                    <td><h5><b>{{__('messages.username')}}</b></h5></td>
+                                    <td><h5><b>{{__('messages.contributed')}}</b></h5></td>
                                 </tr>
                             </table>
                         </div>  
@@ -116,7 +113,5 @@
             var ctx = document.getElementById('chart-area').getContext('2d');
             window.myPie = new Chart(ctx, config);
         }
-
     }
-
 </script>

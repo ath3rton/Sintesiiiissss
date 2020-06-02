@@ -17,9 +17,9 @@ class AjaxController extends Controller
         $msg= operacions::where(['projecte' => $s])->get();
         $all = array();
         foreach($msg as $ms){
-            $u = userinfo::find($ms->user)->get()->first();
+            $u = userinfo::find($ms->user);
             array_push($all,['user' => $u->nickname,
-                        'quant' => $ms->quantitat]);
+                            'quant' => $ms->quantitat]);
         }
         return response()->json($all);
     }

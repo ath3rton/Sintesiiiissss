@@ -17,6 +17,7 @@ use Illuminate\Http\Request as Request;
 */
 Route::post('login', [ 'as' => 'login', 'uses' => 'AuthController@login']);
 
+// Lengua
 Route::get('/locale/{locale}', function ($locale) {
     if (in_array($locale, ['en', 'es'])) {
         session()->put('locale', $locale);
@@ -25,18 +26,27 @@ Route::get('/locale/{locale}', function ($locale) {
     }
     return redirect('/');
 });
-
+// Raiz proyectos
 Route::get('/', function () {
     if(!App::getLocale()){
         return redirect('locale/es');
     }
     $pro = array(
-        'actiu' =>1
+        'actiu' =>1,
+        'estat' => 'Obert'
     );
 
     $projs = projectes::where($pro)->get();
-    return view('home',[ 'projs' => $projs ]);
+    return view('home',[ 'projs' => $projs,
+                        'mod' => true ]);
 })->name('/');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Login forms
+Route::get('welcome', function () {
+    return view('welcome');
+});
 
 Route::get('log',function () {
     session()->forget('user');
@@ -44,24 +54,22 @@ Route::get('log',function () {
     return view('welcome');
 })->name('log');
 
+Route::post('registre', [ 'as' => 'registre', 'uses' =>'Auth\RegistreController@registre']);
+
+// logout
 Route::get('logout',function () {
     session()->forget('user');
     session()->forget('uinf');
     return redirect()->route('/');
 })->name('logout');
 
-Route::post('registre', [ 'as' => 'registre', 'uses' =>'Auth\RegistreController@registre']);
 
 
-Route::get('welcome', function () {
-    return view('welcome');
-});
-
+// CRUD Usuaris
 Route::get('users', function() {
     return Users::all();
 });
 
-// CRUD Usuaris
 Route::get('users/{id}', function($id) {
     return Users::find($id);
 });
@@ -89,15 +97,35 @@ Route::get('projecte/{id}/{emp}', function($id,$emp) {
     $proj = projectes::find($id);
     $emp = empreses::find($emp);
     return view('projectView',['proj' => $proj,
-                               'emp' => $emp]);
+                               'emp' => $emp,
+                               'mod' => false]);
 });
+
+Route::get('projcreate', function() {
+    return view('projectCreate',['proj' => null]);
+})->name('projcreate');
+
+Route::get('projmod', function() {
+    $opc = ['emp_id' => session()->get('user')->id];
+    $proj = projectes::where($opc)->get();
+    return view('home',['projs' => $proj,
+                        'mod' => true]);
+})->name('projmod');
+
+Route::get('projmodify/{id}', function($id) {
+    $proj = projectes::find($id);
+    return view('projectCreate',['proj' => $proj]);
+})->name('projmodify');
+
+//operacions
 Route::get('getops/{id}','AjaxController@index');
 Route::get('getopsus/{id}','AjaxController@indexus');
 //---
 
+// Por si lo necesito
 Route::middleware('auth:api')
     ->get('/user', function (Request $request) {
         return $request->user();
     });
 
-Route::get('/home', 'HomeController@index')->name('home');
+

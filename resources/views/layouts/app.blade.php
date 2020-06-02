@@ -27,18 +27,26 @@
     <div class="d-flex" id="wrapper app">
 
     <!-- Sidebar -->
-    <div class="bpcolor border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading scolor">{{__('messages.controlpanel')}} </div>
-      <hr class="borderscolor">
-      <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Events</a>
-        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action text-white bpcolor">Status</a>
-      </div>
-    </div>
+    @if (session()->has('user'))
+        @if (session()->get('user')->rol!=3)
+            <div class="bpcolor border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading scolor">{{__('messages.controlpanel')}} </div>
+            <hr class="borderscolor">
+            @if (session()->get('user')->rol==2)
+                <div class="list-group list-group-flush">
+                    <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
+                    <a href="#" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.modproj') }}</a>        
+                </div>
+            @elseif (session()->get('user')->rol==1)
+                <div class="list-group list-group-flush">
+                    <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
+                    <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.modproj') }}</a>        
+                    <a href="#" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>
+                </div>
+            @endif
+            </div>
+        @endif
+    @endif
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
@@ -94,7 +102,16 @@
                                             @csrf
                                         </form>
                                     </div>
-                                </li>    
+                                </li>
+                                <li class="nav-item  ml-5">
+                                    <a class="nav-link" href="/locale/es"><img width="15px"height="11px" src="{{ asset('images/logo/spain.png') }}"></a>
+                                </li>
+                                <li class="nav-item ">
+                                    <span class="nav-link">|</span>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="/locale/en"><img width="15px"height="11px" src="{{ asset('images/logo/english.png') }}"></a>
+                                </li>
                             @endif
                             
                         @endguest

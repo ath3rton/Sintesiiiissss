@@ -11025,6 +11025,10 @@ legend {
   border-color: #43a55b;
 }
 
+hr {
+  margin-top: 5px;
+}
+
 @font-face {
   font-family: horizon;
   src: url("/fonts/horizon/Horizon.otf");

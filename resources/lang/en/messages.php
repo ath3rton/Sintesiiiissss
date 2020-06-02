@@ -31,4 +31,15 @@ return [
     'location' => 'Location',
     'contribution' => 'Contributions',
     'contributed' => 'Contributed',
+    'createproj' => 'Create Project',
+    'modproj' =>  'Modify Project',
+
+    // PROJ related
+    'projname' => 'Project Name',
+    'description' => 'Description',
+    'fraction' => 'Fraction',
+    'create' => 'Create',
+    'modify' => 'Modify',
+    'delete' => 'Delete',
+    'projvalid' => 'Project Validation',
 ];
