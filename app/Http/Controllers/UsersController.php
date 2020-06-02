@@ -57,4 +57,10 @@ class UsersController extends Controller
         session()->put('uinf', $uinf);
         return redirect()->route('/');
     }
+    public function claim()
+    {
+        $user->delete();
+
+        return response()->json(null, 204);
+    }
 }

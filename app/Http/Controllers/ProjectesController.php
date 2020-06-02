@@ -23,6 +23,10 @@ class ProjectesController extends Controller
 
     public function store(Request $request)
     {
+    //     $val = Request::validate([
+    //         'user_mail'=>'required|string',
+    //         'user_password' => 'required|string'
+    //    ]);
         $proj = projectes::create($request->all());
         // Aquests json son per retornar l'estat HTTP
         return redirect()->route('/');
@@ -34,9 +38,11 @@ class ProjectesController extends Controller
         return back();
     }
 
-    public function delete(projectes $proj)
+    public function delete($proj)
     {
-        $proj->delete();
+        $proj = projectes::find($proj);
+        $proj->actiu = 0;
+        $proj->save();
         return back();
     }
 }

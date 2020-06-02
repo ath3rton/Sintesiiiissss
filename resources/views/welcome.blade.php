@@ -14,8 +14,8 @@
 <body>
     
     <div class="all">
-        <h1 class="text-center mt-5 mb-5">{{ __('messages.login') }}</h1>
         <div class="wrapper fadeInDown">
+            <h1 class="titl col-xl-12 text-center mt-5">{{ __('messages.login') }}</h1>
             <div class="login-page">
                 <div class="form">
                     <form class="login-form log" action="{{ route('login')}}" method="POST">

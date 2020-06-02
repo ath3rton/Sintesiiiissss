@@ -10928,6 +10928,16 @@ a.text-dark:focus {
   }
 }
 
+@font-face {
+  font-family: "Library";
+  src: url(/fonts/Library3am.otf?75b55bbf7b4d993f759e7cd7c4888818);
+}
+
+.titl {
+  font-family: Library;
+  color: #00adb5;
+}
+
 body {
   background: url("/../images/silvio.jpg") no-repeat center center fixed;
   background-size: cover;

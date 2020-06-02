@@ -15,9 +15,10 @@ return [
     'mail' => 'Mail',
     'capslock' => 'Caps lock is active',
     'visitor' => 'As Visitor',
+    'claim' => 'Claim Account',
 
     //home
-    'view' => 'Ver Proyecto',
+    'view' => 'View Project',
 
     //sidebar
     'controlpanel' => 'Controll Panel',
@@ -45,4 +46,6 @@ return [
     'projvalid' => 'Project Validation',
     'validate' => 'Validate',
     'novalidate' => 'Nothing to Validate',
+    'myprojects' => 'My Projects',
+    'projects' => 'Projects',
 ];

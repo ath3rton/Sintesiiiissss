@@ -1,5 +1,4 @@
-$font-stack: Helvetica,
-sans-serif;
+$font-stack: Helvetica,sans-serif;
 $primary-color: #222831;
 $secondary-color : #00adb5;
 $tertiary-color: #eeeeee;
@@ -10,7 +9,14 @@ $danger : #f40552;
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-
+@font-face {
+    font-family: 'Library';
+    src: url("fonts/library/Library3am.otf");
+}
+.titl{
+    font-family: Library;
+    color:$secondary-color;
+}
 body {
     background: url("/../images/silvio.jpg") no-repeat center center fixed;
     background-size: cover;

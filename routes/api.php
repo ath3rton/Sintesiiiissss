@@ -30,7 +30,7 @@ Route::get('projectes', 'ProjectesController@index');
 Route::get('projectes/{projecte}', 'ProjectesController@show');
 Route::post('projadd', 'ProjectesController@store')->name('projadd');
 Route::put('projmodficar/{proj}', 'ProjectesController@update')->name('projmodficar');
-Route::delete('projdel/{proj}', 'ProjectesController@delete')->name('projdel');
+Route::get('projdel/{id}', 'ProjectesController@delete')->name('projdel');
 
 
 

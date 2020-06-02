@@ -12,7 +12,7 @@
                     <h2 class="m-2"><img class="mr-5" height="50px" width="50px"
                             src="{{ asset('images/emp_logos').'/'.$emp->logo }}" />{{$proj->nom_projecte}}</h2> 
                     <div class="row ml-3">Telf: <a  class="ml-3" href="tel:{{$emp->telf}}">{{$emp->telf}}</a></div>
-                    <div class="row ml-3">Web: <a class="ml-3" href="tel:{{$emp->web}}">{{$emp->web}}</a></div>
+                    <div class="row ml-3">Web: <a class="ml-3" href="https://{{$emp->web}}">{{$emp->web}}</a></div>
                     <div class="m-3">
                         <h5 class="text-uppercase">{{__('messages.details')}}:</h5>
                         <div class="row">
@@ -36,19 +36,18 @@
                 </div>
             </div>
         </div>
-            <div class="card col-xl-12 m-3">
-                <div class="card-body row">
-                    <div class="col-xl-8">
-                        <h2 class="m-2">{{__('messages.contribution')}}</h2>
-                        <div class="row"> 
-                            <table id="conts" class="table">
-                                <tr>
-                                    <td><h5><b>{{__('messages.username')}}</b></h5></td>
-                                    <td><h5><b>{{__('messages.contributed')}}</b></h5></td>
-                                </tr>
-                            </table>
-                        </div>  
-                    </div>
+        <div class="card col-xl-12 m-3">
+            <div class="card-body row">
+                <div class="col-xl-8">
+                    <h2 class="m-2">{{__('messages.contribution')}}</h2>
+                    <div class="row"> 
+                        <table id="conts" class="table">
+                            <tr>
+                                <td><h5><b>{{__('messages.username')}}</b></h5></td>
+                                <td><h5><b>{{__('messages.contributed')}}</b></h5></td>
+                            </tr>
+                        </table>
+                    </div>  
                 </div>
             </div>
         </div>
@@ -81,7 +80,7 @@
             success: function (data) {
                 console.log(data);
                 $.each(data, function (i) {
-                    $( "#conts" ).append( "<tr><td>"+data[i].user+"</td><td>"+data[i].quant+"</td></tr>" );
+                    $( "#conts" ).append( "<tr><td>"+data[i].user.nickname+"</td><td>"+data[i].quant+"</td></tr>" );
                    
                 });
             }
@@ -99,8 +98,8 @@
                         data: [ops, {{$proj->objectiu}}],
                         label: 'Dataset 1',
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)'
+                            'rgba(255, 99, 132, 0.4)',
+                            'rgba(54, 162, 235, 0.4)'
                         ],
                     }],
                     labels: ['{{__('messages.achieved')}}', '{{__('messages.target')}}'

@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+<h1 class="projtitl col-xl-12 text-center">{{ __('messages.createproj') }}</h1>
     <div class="col-xl-12 row">
         <div class="card col-xl-12 m-3">
             <form class="login-form log m-4" action="{{$proj?route('projmodficar',$proj):route('projadd')}}" method="POST">
@@ -34,9 +35,18 @@
                     @if($proj)
                         {{__('messages.modify')}}
                     @else
-                        {{__('messages.create’')}}
+                        {{__('messages.create')}}
                     @endif
                 </button>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </form>
         </div>
     </div>

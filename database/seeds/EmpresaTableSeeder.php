@@ -5,6 +5,7 @@ use App\empreses;
 use App\denuncia;
 use App\projectes;
 use App\operacions;
+use App\Users;
 use Overdesign\CifGenerator\Cif;
 
 class EmpresaTableSeeder extends Seeder
@@ -18,28 +19,31 @@ class EmpresaTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('es_VE');
         
-        for ($i = 2; $i < 30; $i++) {
-            empreses::create(['nom_empresa' => $faker->company,
-                              'cif' => Cif::generate(),
-                              'ciutat' => $faker->city,
-                              'owner' => $i]);
-        }
-        for ($i = 2; $i < 17; $i++) {
+        // for ($i = 2; $i < 30; $i++) {
+        //     empreses::create(['nom_empresa' => $faker->company,
+        //                       'cif' => Cif::generate(),
+        //                       'ciutat' => $faker->city,
+        //                       'owner' => $i]);
+        // }
+        for ($i = 0; $i < 100000; $i++) {
+            $emp = empreses::inRandomOrder()->get()->first();
             projectes::create(['nom_projecte' => $faker->company,
                                'descripcio' => $faker->sentence,
                                'feedback'=> $faker->sentence,
                                'objectiu'=> $faker->randomFloat($nbMaxDecimals = NULL, $min = 1, $max = 999999),
                                'fraccio'=> $faker->randomFloat($nbMaxDecimals = NULL, $min = 1, $max = 9999),
-                               'estat'=> 'Creat',
+                               'estat'=> 'Obert',
                                'actiu'=> true,
-                               'emp_id'=> $i]);
+                               'emp_id'=> $emp->id]);
         }
-        for ($i = 0; $i < 500; $i++) {
-            operacions::create([
-                'quantitat' => rand(100, 1),
-                'user' => rand(29, 2),
-                'projecte' => rand(15, 1)
-            ]);
-        }
+        // for ($i = 0; $i < 10000; $i++) {
+        //     $proj = projectes::inRandomOrder()->get()->first();
+        //     $emp = Users::inRandomOrder()->get()->first();
+        //     operacions::create([
+        //         'quantitat' => rand(200, 1),
+        //         'user' => $emp->id,
+        //         'projecte' => $proj->id
+        //     ]);
+        // }   
     }
 }

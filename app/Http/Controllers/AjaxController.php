@@ -13,12 +13,11 @@ class AjaxController extends Controller
         return response()->json($msg);
     }
     public function indexus($s) {
-        $us = "wat";
         $msg= operacions::where(['projecte' => $s])->get();
         $all = array();
         foreach($msg as $ms){
-            $u = userinfo::find($ms->user);
-            array_push($all,['user' => $u->nickname,
+            $u = userinfo::where(['usuari'=> $ms->user])->get()->first();
+            array_push($all,['user' => $u,
                             'quant' => $ms->quantitat]);
         }
         return response()->json($all);

@@ -19,117 +19,121 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    @extends('preloader')
-    <div class="d-flex" id="wrapper app">
 
-    <!-- Sidebar -->
-    @if (session()->has('user'))
-        @if (session()->get('user')->rol!=3)
-            <div class="bpcolor border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading scolor">{{__('messages.controlpanel')}} </div>
-            <hr class="borderscolor">
-            @if (session()->get('user')->rol==2)
-                <div class="list-group list-group-flush">
-                    <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
-                    <a href="#" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.modproj') }}</a>        
-                </div>
-            @elseif (session()->get('user')->rol==1)
-                <div class="list-group list-group-flush">
-                    <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
-                    <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.modproj') }}</a>        
-                    <a href="{{ route('validate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>
+<body>
+@extends('preloader')
+    <div class="d-flex tot" id="wrapper app">
+        <!-- Sidebar -->
+        @if (session()->has('user'))
+            @if (in_array(session()->get('user')->rol,array(1,2,3)) )
+                <div class="bpcolor border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading scolor text-center">{{__('messages.controlpanel')}} </div>
+                <hr class="borderscolor">
+                @if (session()->get('user')->rol<=2)
+                    <div class="list-group list-group-flush">
+                        <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
+                        <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.myprojects') }}</a>           
+                    </div>
+                @elseif (session()->get('user')->rol==1)
+                    <div class="list-group list-group-flush">
+                        <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
+                        <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.myprojects') }}</a>        
+                        <a href="{{ route('validate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>
+                    </div>
+                @elseif(session()->get('user')->rol==3)
+                    <div class="list-group list-group-flush">
+                        <a href="{{ route('claim') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.claim') }}</a>
+                    </div>
+                @endif
                 </div>
             @endif
-            </div>
         @endif
-    @endif
-    <!-- /#sidebar-wrapper -->
+        <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="container">
-                <a class="navbar-brand nlogo" href="{{ url('/') }}">
-                    €$CIN
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                <div class="container">
+                        <a class="navbar-brand nlogo" href="{{ url('/') }}">
+                            €$CIN
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                    </ul>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Left Side Of Navbar -->
+                            <ul class="navbar-nav mr-auto">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (session()->get('user')==null)
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('log') }}">{{ __('Login') }}</a>
-                                </li>
-                                @if (Route::has('log'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('log') }}">{{ __('Register') }}</a>
-                                    </li>
-                                @endif
-                            @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ session()->get('uinf')->nickname }} <span class="caret"></span>
-                                    </a>
-                                        
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
+                            </ul>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
-                                <li class="nav-item  ml-5">
-                                    <a class="nav-link" href="/locale/es"><img width="15px"height="11px" src="{{ asset('images/logo/spain.png') }}"></a>
-                                </li>
-                                <li class="nav-item ">
-                                    <span class="nav-link">|</span>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="/locale/en"><img width="15px"height="11px" src="{{ asset('images/logo/english.png') }}"></a>
-                                </li>
-                            @endif
-                            
-                        @endguest
-                    </ul>
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                    @if (session()->get('user')==null)
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('log') }}">{{ __('Login') }}</a>
+                                        </li>
+                                        @if (Route::has('log'))
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('log') }}">{{ __('Register') }}</a>
+                                            </li>
+                                        @endif
+                                    @else
+                                        <li class="nav-item dropdown">
+                                            <h5 id="navbarDropdown" class="nav-link dropdown-toggle"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                {{ session()->get('uinf')->nickname }} <span class="caret"></span>
+                                            </h5>
+                                                
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item  ml-5">
+                                            <a class="nav-link" href="/locale/es"><img width="15px"height="11px" src="{{ asset('images/logo/spain.png') }}"></a>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <span class="nav-link">|</span>
+                                        </li>
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="/locale/en"><img width="15px"height="11px" src="{{ asset('images/logo/english.png') }}"></a>
+                                        </li>
+                                    @endif
+                                    
+                                @endguest
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+            </nav>
+
+            <div class="py-4 container-fluid">
+            
+                @yield('content')
             </div>
         </div>
-      </nav>
+        <!-- /#page-content-wrapper -->
 
-      <div class="py-4 container-fluid">
-        @yield('content')
-      </div>
     </div>
-    <!-- /#page-content-wrapper -->
-
-  </div>
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <script type="text/javascript" src="{{ URL::asset('js/pre.js')}}"></script>
 </body>
-<script type="text/javascript" src="{{ URL::asset('js/pre.js')}}"></script>
+
 </html>

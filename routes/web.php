@@ -24,7 +24,7 @@ Route::get('/locale/{locale}', function ($locale) {
     }else{
         session()->put('locale', 'es');
     }
-    return redirect('/');
+    return back();
 });
 // Raiz proyectos
 Route::get('/', function () {
@@ -35,8 +35,32 @@ Route::get('/', function () {
         'actiu' =>1,
         'estat' => 'Obert'
     );
+    // LA ABERRACION BUGEADA
+    $projs = DB::table('projectes')
+        ->join('operacions', 'projectes.id', '=', 'operacions.projecte')
+        ->select('projectes.*',DB::raw('sum(operacions.quantitat) as quantitat'))
+        ->groupBy('operacions.projecte')
+        ->groupBy('projectes.id')
+        ->groupBy('projectes.nom_projecte')
+        ->groupBy('projectes.descripcio')
+        ->groupBy('projectes.feedback')
+        ->groupBy('projectes.objectiu')
+        ->groupBy('projectes.fraccio')
+        ->groupBy('projectes.estat')
+        ->groupBy('projectes.actiu')
+        ->groupBy('projectes.emp_id')
+        ->groupBy('projectes.created_at')
+        ->groupBy('projectes.updated_at')
+        ->groupBy('projectes.img')
+        ->paginate(15);
 
-    $projs = projectes::where($pro)->get();
+    // bug tambien ...
+    // $projs = DB::select(DB::raw("  SELECT projectes.* ,sum(operacions.quantitat) 
+    //                                 FROM projectes 
+    //                                 inner JOIN operacions on operacions.projecte = projectes.id 
+    //                                 GROUP BY projecte"))
+    //                             ->paginate(15);
+
     return view('home',['projs' => $projs,
                         'mod' => false ]);
 })->name('/');
@@ -62,8 +86,6 @@ Route::get('logout',function () {
     session()->forget('uinf');
     return redirect()->route('/');
 })->name('logout');
-
-
 
 // CRUD Usuaris
 Route::get('users', function() {
@@ -91,6 +113,7 @@ Route::delete('users/{id}', function($id) {
 });
 
 Route::post('visitor', 'UsersController@visitor')->name('visitor');
+Route::post('claim', 'UsersController@claim')->name('claim');
 //---
 
 //Projectes
@@ -107,8 +130,9 @@ Route::get('projcreate', function() {
 })->name('projcreate');
 
 Route::get('projmod', function() {
-    $opc = ['emp_id' => session()->get('user')->id];
-    $proj = projectes::where($opc)->get();
+    $opc = ['emp_id' => session()->get('user')->id,
+            'actiu' => 1];
+    $proj = projectes::where($opc)->paginate(15);
     return view('home',['projs' => $proj,
                         'mod' => true]);
 })->name('projmod');
