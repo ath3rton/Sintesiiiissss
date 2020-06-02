@@ -4,7 +4,7 @@
 <div class="container">
     <div class="col-xl-12 row">
         <div class="card col-xl-12 m-3">
-            <form class="login-form log m-4" action="{{$proj?route('projmodficar'):route('projadd')}}" method="{{$proj?'PUT':'POST'}}">
+            <form class="login-form log m-4" action="{{$proj?route('projmodficar',$proj):route('projadd')}}" method="POST">
             {{ method_field($proj?'PUT':'POST') }}
                 {{ csrf_field() }}
                 <div class="form-row">

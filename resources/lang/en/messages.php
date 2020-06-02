@@ -14,6 +14,7 @@ return [
     'lname' => 'Last Name',
     'mail' => 'Mail',
     'capslock' => 'Caps lock is active',
+    'visitor' => 'As Visitor',
 
     //home
     'view' => 'Ver Proyecto',
@@ -42,4 +43,6 @@ return [
     'modify' => 'Modify',
     'delete' => 'Delete',
     'projvalid' => 'Project Validation',
+    'validate' => 'Validate',
+    'novalidate' => 'Nothing to Validate',
 ];

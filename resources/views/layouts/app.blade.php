@@ -21,9 +21,6 @@
 </head>
 <body>
     @extends('preloader')
-
-
-
     <div class="d-flex" id="wrapper app">
 
     <!-- Sidebar -->
@@ -41,7 +38,7 @@
                 <div class="list-group list-group-flush">
                     <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
                     <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.modproj') }}</a>        
-                    <a href="#" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>
+                    <a href="{{ route('validate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>
                 </div>
             @endif
             </div>

@@ -11,6 +11,11 @@ class ProjectesController extends Controller
         return projectes::all();
     }
 
+    public function vali()
+    {
+        return view('validateView',['projs' =>projectes::where(['estat'=>'Creat'])->get()]);
+    }
+
     public function show(projectes $proj)
     {
         return $proj;
@@ -23,17 +28,15 @@ class ProjectesController extends Controller
         return redirect()->route('/');
     }
 
-    public function update(Request $request, projectes $proj)
+    public function update(Request $request,projectes $proj)
     {
         $proj->update($request->all());
-
-        return response()->json($proj, 200);
+        return back();
     }
 
     public function delete(projectes $proj)
     {
         $proj->delete();
-
-        return response()->json(null, 204);
+        return back();
     }
 }

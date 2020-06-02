@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Users;
+use App\userinfo;
+use Illuminate\Support\Str;
+
 
 class UsersController extends Controller
 {
@@ -36,5 +40,21 @@ class UsersController extends Controller
         $user->delete();
 
         return response()->json(null, 204);
+    }
+    public function visitor(Request $request)
+    {
+        $user = Users::create(['user_mail' => Str::random(32),
+                               'user_password' => Str::random(32),
+                               'rol' => 3]);
+        $uinf = userinfo::create(
+            ['first_name' => Str::random(32),
+             'last_name' => Str::random(32),
+             'nickname' => $request->get('nickname'),
+             'dni' => Str::random(32),
+             'usuari' => $user->id]
+        );
+        session()->put('user', $user);
+        session()->put('uinf', $uinf);
+        return redirect()->route('/');
     }
 }

@@ -40,8 +40,7 @@
                         <p class='info text-danger'>{{__('messages.capslock')}}</p>
                         <button type="submit" class="btn">{{ __('messages.login') }}</button>
                         <button type="button" id="breg" class="btn">{{ __('messages.register') }}</button>
-                        {{ Form::close() }}
-                        
+                    {{ Form::close() }}
                 </div>
             </div>
             <div class="reg-page">
@@ -69,21 +68,31 @@
                             <input type="text" class="form-control col-xl-12" id="dni" name="dni"
                                 value="{{ old('dni') }}" placeholder="DNI*" required />
 
-                        </divclass=>
+                        </div>
                         <p class='info text-danger'>{{__('messages.capslock')}}</p>
                         <button class="btn" type="submit">{{ __('messages.register') }}</button>
-                        {{ Form::close() }}
+                    {{ Form::close() }}
                         @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         @endif
                         <button class="btn" id="lbtn" type="button">{{ __('messages.login') }}</button>
+                    </form>
                 </div>
+            </div>
+            <div class="form log reg" id="vis">
+                <form class="login-form col-xl-12" action="{{ route('visitor')}}" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                        <input  name="nickname" placeholder="Nickname" required/>
+                        <button class="btn">{{ __('messages.visitor') }}</button>
+                    </div>
+                {{ Form::close() }}
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    // login related
     'or' => 'o',
     'login' => 'Iniciar Session',
     'register' => 'Registrarse',
@@ -12,7 +13,7 @@ return [
     'lname' => 'Apellidos',
     'mail' => 'Correo',
     'capslock' => 'Mayusculas activadas',
-
+    'visitor' => 'Como Visitante',
     //home
     'view' => 'View Project',
 
@@ -40,4 +41,6 @@ return [
     'modify' => 'Modificar',
     'delete' => 'Borrar',
     'projvalid' => 'Validar Proyectos',
+    'validate' => 'Validar',
+    'novalidate' => 'Nada que Validar',
 ];

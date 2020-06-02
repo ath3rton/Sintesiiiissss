@@ -29,13 +29,10 @@ Route::post('logout', 'Auth\LoginController@logout');
 Route::get('projectes', 'ProjectesController@index');
 Route::get('projectes/{projecte}', 'ProjectesController@show');
 Route::post('projadd', 'ProjectesController@store')->name('projadd');
-Route::put('projectes/{id}', function(Request $request, $id) {
-    $article = projectes::findOrFail($id);
-    $article->update($request->all());
-    return $article;
-})->name('projmodficar');
+Route::put('projmodficar/{proj}', 'ProjectesController@update')->name('projmodficar');
+Route::delete('projdel/{proj}', 'ProjectesController@delete')->name('projdel');
 
-Route::delete('projectes/{projecte}', 'ProjectesController@delete');
+
 
 // crud empresa
 Route::get('empresa', 'EmpresaController@index');

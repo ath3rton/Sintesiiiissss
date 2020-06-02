@@ -37,8 +37,8 @@ Route::get('/', function () {
     );
 
     $projs = projectes::where($pro)->get();
-    return view('home',[ 'projs' => $projs,
-                        'mod' => true ]);
+    return view('home',['projs' => $projs,
+                        'mod' => false ]);
 })->name('/');
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -87,9 +87,10 @@ Route::put('users/{id}', function(Request $request, $id) {
 
 Route::delete('users/{id}', function($id) {
     Users::find($id)->delete();
-
     return 204;
 });
+
+Route::post('visitor', 'UsersController@visitor')->name('visitor');
 //---
 
 //Projectes
@@ -117,6 +118,14 @@ Route::get('projmodify/{id}', function($id) {
     return view('projectCreate',['proj' => $proj]);
 })->name('projmodify');
 
+Route::get('valid/{id}', function($id) {
+    $proj = projectes::find($id);
+    $proj->estat = 'Obert';
+    $proj->save();
+    return back();
+})->name('valid');
+
+Route::get('validate', 'ProjectesController@vali')->name('validate');
 //operacions
 Route::get('getops/{id}','AjaxController@index');
 Route::get('getopsus/{id}','AjaxController@indexus');

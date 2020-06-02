@@ -10963,6 +10963,18 @@ body {
   border: 1px solid #00adb5;
 }
 
+#vis {
+  width: 100%;
+  margin: 30px;
+  position: relative;
+  width: 360px;
+  margin: auto;
+}
+
+#vis input {
+  border: 1px solid #00adb5;
+}
+
 .form .log,
 .reg {
   position: relative;

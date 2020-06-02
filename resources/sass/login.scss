@@ -44,7 +44,16 @@ body {
         max-width: 540px;
     }
 }
-
+#vis{
+    width: 100%;
+    margin: 30px;
+    input{
+        border:1px solid $secondary-color;
+    }
+    position: relative;
+    width: 360px;
+    margin: auto;
+}
 .form .log,.reg{
     position: relative;
     background: $tertiary-color;

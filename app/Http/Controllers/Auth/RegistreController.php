@@ -46,13 +46,15 @@ class RegistreController extends Controller
         }
         $user = Users::create([
             'user_mail' => Request::get('user_mail'),
-            'user_password' => Hash::make(Request::get('user_password'))
+            'user_password' => Hash::make(Request::get('user_password')),
+            'rol' =>2
         ]);
         $us = array(
             'user_mail'=> Request::get('user_mail')
         );
         $us = Users::where($us)->first();
-        $info = userinfo::create([
+        $uinf = userinfo::where(['usuari' => $us->id])->first();
+        userinfo::create([
             'first_name' => Request::get('fname'),
             'last_name' => Request::get('lname'),
             'nickname' => Request::get('fname'),
@@ -60,6 +62,7 @@ class RegistreController extends Controller
             'usuari' => $us->id
         ]);
         session()->put('user', $us);
+        session()->put('uinf',$uinf);
         return redirect()->route('/');
     }
 }

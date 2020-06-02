@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Users extends Model
 {
     protected $primaryKey = 'id';
-    protected $fillable = ['user_mail','user_password'];
+    protected $fillable = ['user_mail','user_password','rol'];
     
     /**
      * Generacio del token per l'usuari
