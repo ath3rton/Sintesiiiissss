@@ -10981,6 +10981,10 @@ a.text-dark:focus {
   overflow: hidden;
 }
 
+.amount {
+  z-index: 100;
+}
+
 .description {
   height: auto;
   overflow: hidden;
@@ -11169,7 +11173,7 @@ div.content {
           animation: vueltas 2.5s infinite normal;
   width: 150px;
   height: 150px;
-  border: 1px solid #21d78e;
+  border: 1px solid #234c84;
 }
 
 .vueltas:after {
@@ -11184,12 +11188,12 @@ div.content {
 @keyframes vueltas {
   50% {
     border-radius: 50%;
-    border-color: #09547a;
+    border-color: #db1dd2;
     transform: scale(0.5) rotate(360deg);
   }
 
   100% {
-    border-color: #8b9123;
+    border-color: #d0cc7e;
     transform: scale(1) rotate(720deg);
   }
 }
@@ -11197,12 +11201,12 @@ div.content {
 @-webkit-keyframes vueltas {
   50% {
     border-radius: 50%;
-    border-color: #f2703e;
+    border-color: #b5d780;
     -webkit-transform: scale(0.5) rotate(360deg);
   }
 
   100% {
-    border-color: #6135c2;
+    border-color: #b918ff;
     -webkit-transform: scale(1) rotate(720deg);
   }
 }
@@ -11210,14 +11214,14 @@ div.content {
 @keyframes shadow {
   50% {
     transform: scale(0.5);
-    border-color: #6a57fe;
+    border-color: #4c9972;
   }
 }
 
 @-webkit-keyframes shadow {
   50% {
     -webkit-transform: scale(0.5);
-    border-color: #4adb16;
+    border-color: #4a495e;
   }
 }
 

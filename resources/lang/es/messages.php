@@ -53,4 +53,6 @@ return [
     'emps' => 'Empresas',
     'createemp' => 'Crear Empresa',
     'city' => 'Ciudad',
+    'amount' => 'Cantidad',
+    'send' => 'Enviar',
 ];

@@ -22,4 +22,26 @@ class EmpresaController extends Controller
         return redirect()->route('/');
         // return response()->json($user, 201);
     }
+    public function update(Request $request)
+    {
+        $emp = empreses::where(['owner' => $request->get('owner')])->first();
+       
+        $file = $request->file('logo');
+        $filelast = $request->file('logolast');
+        $hash = null;
+        
+        if(!$filelast && $file){
+            $hash = Str::random(32).".".$file->getClientOriginalExtension();
+            $destinationPath = 'images/emp_logos/';
+            $file->move($destinationPath, $hash);
+            $emp->logo =$hash;
+        }
+        $emp->nom_empresa = $request->get('nom_empresa');
+        $emp->cif = $request->get('cif');
+        $emp->ciutat =$request->get('ciutat');
+        $emp->telf = $request->get('telf');
+        $emp->web = $request->get('web');
+        $emp->save();
+        return redirect()->route('myemps');
+    }
 }

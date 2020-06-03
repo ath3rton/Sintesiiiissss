@@ -54,4 +54,7 @@ return [
     'emps' => 'Companies',
     'createemp' => 'Create Company',
     'city' => 'City',
+    'amount' => 'Amount',
+    'send' => 'Send',
+    
 ];

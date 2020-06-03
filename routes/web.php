@@ -37,7 +37,7 @@ Route::get('/', function () {
     );
     // LA ABERRACION BUGEADA
     $projs = DB::table('projectes')
-        ->join('operacions', 'projectes.id', '=', 'operacions.projecte')
+        ->leftjoin('operacions', 'projectes.id', '=', 'operacions.projecte')
         ->select('projectes.*',DB::raw('sum(operacions.quantitat) as quantitat'))
         ->groupBy('operacions.projecte')
         ->groupBy('projectes.id')
@@ -123,10 +123,16 @@ Route::post('visitor', 'UsersController@visitor')->name('visitor');
 Route::post('claim', 'UsersController@claim')->name('claim');
 //---
 // EMPRESA
-
 Route::get('empcreate', function() {
-    return view('empcView');
+    return view('empcView', ['mod' => false]);
 })->name('empcreate');
+
+Route::get('modemp/{id}', function($id) {
+    $emp = empreses::find($id);
+    return view('empcView',['mod' => $emp]);
+})->name('modemp');
+
+Route::post('empresa', 'EmpresaController@update')->name('empresamod');
 //---
 //Projectes
 Route::get('projecte/{id}/{emp}', function($id,$emp) {
@@ -169,6 +175,8 @@ Route::get('validate', 'ProjectesController@vali')->name('validate');
 //operacions
 Route::get('getops/{id}','AjaxController@index');
 Route::get('getopsus/{id}','AjaxController@indexus');
+
+Route::get('invertir/{id}','InvestController@invest')->name('invertir');
 //---
 
 // Por si lo necesito

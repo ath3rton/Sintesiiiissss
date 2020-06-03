@@ -10,7 +10,7 @@
         <h1 class="projtitl col-xl-12 text-center">{{ __('messages.createproj') }}</h1>
         <div class="card col-xl-12 m-3">
             <form class="login-form log m-4" action="{{$proj?route('projmodficar',$proj):route('projadd')}}" enctype="multipart/form-data" method="POST">
-            {{ method_field($proj?'PUT':'POST') }}
+                {{ method_field($proj?'PUT':'POST') }}
                 {{ csrf_field() }}
                 <div class="form-row">
                     <div class="form-group col-md-6">

@@ -6,7 +6,7 @@
 <div class="d-flex justify-content-center">
     <div class="container col-xl-8 row m-0 flex-center ">
         <div class="card col-xl-12">
-            <div class="card-body row">
+            <div class="card-body row projcontent">
                 <div class="col-xl-8">
                     <div class="row justify-content-center ">
                         <h2><img  height="50px" width="50px"
@@ -30,13 +30,26 @@
                     <hr>
                     <h5>{{__('messages.proddesc')}}:</h5>
                     <p class="ml-3">{{$proj->descripcio}}</p>
+                    <button type="button" class="btn btn-primary filelogo" id="invest">Invertir</button>
                 </div>
                 <div class="col-xl-4">
                     <h1 class="text-center"></h1>
                     <canvas id="chart-area" width="400" height="400"></canvas>
-
                 </div>
             </div>
+            <div class="container col-xl-2 card flex-center amount" style="display:none">
+                <div class="card-body ">
+                    <form action="{{route('invertir',$proj->id)}}"  method="GET">
+                        <label for="fraccio">{{__('messages.amount')}}</label>
+                        <input type="number"  class="form-control" id="quantitat" name="quantitat" step="{{$proj->fraccio}}"/>
+                        <input type="hidden"  class="form-control" id="user" name="user"    value="{{session()->get('user')->id}}"/>
+                        <input type="hidden"  class="form-control" id="projecte" name="projecte" value="{{$proj->id}}"/>
+                        <button type="submit" class="form-control mt-3 filelogo">DONE</button>
+                    </form>
+                </div>
+            </div>
+            
+            
         </div>
         <div class="card col-xl-12 mt-3">
             <div class="card-body row">
@@ -87,6 +100,10 @@
                    
                 });
             }
+        });
+        $("#invest").click(function(){
+            
+            $(".amount").show(1000);
         });
         var randomScalingFactor = function () {
             return Math.round(Math.random() * 100);

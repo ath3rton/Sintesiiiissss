@@ -25,6 +25,7 @@
                             <span class="ml-3">Web:</span><span class="ml-3">{{$emp->web}}</span>
                     </div>
                 </div>
+                <a href="{{route('modemp',$emp->id)}}" class="m-1 btn btn-primary">{{__('messages.modify')}}</a>
             </div>
         @endforeach
         
