@@ -31,16 +31,15 @@
                 <hr class="borderscolor">
                 @if (session()->get('user')->rol==1)
                     <div class="list-group list-group-flush">
-                        <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
-                        <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.myprojects') }}</a> 
-                        <a href="{{ route('validate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>
-                        <a href="" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createemp') }}</a>          
+                        <a href="{{ route('validate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>          
                     </div>
-                @elseif (session()->get('user')->rol<=2)
+                @elseif (session()->get('user')->rol==2)
                     <div class="list-group list-group-flush">
                         <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
+                        <a href="{{ route('empcreate')}}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createemp') }}</a> 
                         <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.myprojects') }}</a>        
-                        <a href="" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createemp') }}</a> 
+                        <a href="{{ route('myemps') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.myemps') }}</a>        
+                        
                     </div>
                 @elseif(session()->get('user')->rol==3)
                     <div class="list-group list-group-flush">
@@ -55,8 +54,8 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler filelogo" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=" navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -64,7 +63,7 @@
                         <a class="navbar-brand nlogo" href="{{ url('/') }}">
                             €$CIN
                         </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <button class="navbar-toggler filelogo" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
@@ -96,7 +95,7 @@
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
+                                                        document.getElementById('logout-form').submit();">
                                                     {{ __('Logout') }}
                                                 </a>
 
@@ -105,14 +104,11 @@
                                                 </form>
                                             </div>
                                         </li>
-                                        <li class="nav-item  ml-5">
-                                            <a class="nav-link" href="/locale/es"><img width="15px"height="11px" src="{{ asset('images/logo/spain.png') }}"></a>
+                                        <li class="nav-item  nav-link ml-2 float-left">
+                                            <a  href="/locale/es" class="nav-link"><img width="15px"height="11px" src="{{ asset('images/logo/spain.png') }}"></a>
                                         </li>
-                                        <li class="nav-item ">
-                                            <span class="nav-link">|</span>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a class="nav-link" href="/locale/en"><img width="15px"height="11px" src="{{ asset('images/logo/english.png') }}"></a>
+                                        <li class="nav-item  nav-link ml-2 float-left">
+                                            <a href="/locale/en" class="nav-link"><img width="15px"height="11px" src="{{ asset('images/logo/english.png') }}"></a>
                                         </li>
                                     @endif
                                     

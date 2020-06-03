@@ -25,9 +25,6 @@
                             <input type="number" step="0.001" class="form-control" id="fraccio" name="fraccio" value="{{$proj?$proj->fraccio:''}}" placeholder="{{__('messages.fraction')}}" required/>
                         </div>
                     </div>
-                    <!-- <div class="form-group col-md-6">
-                        <input type="file"><img src="{{ asset('images/logo/escinlogo.png') }}"/></input>
-                    </div> -->
                     <div class="form-group col-md-6">
                         <label for="image" class="col-12">{{__('messages.pimage')}}</label>
                         <label class="btn col-12 text-center form-control btn-success">

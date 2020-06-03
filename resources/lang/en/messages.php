@@ -47,9 +47,11 @@ return [
     'validate' => 'Validate',
     'novalidate' => 'Nothing to Validate',
     'myprojects' => 'My Projects',
+    'myemps' => 'My Companies',
     'projects' => 'Projects',
     'pimage' => 'Project Image',
     'noemps' => 'There Are No Companies Associated to This Account',
     'emps' => 'Companies',
     'createemp' => 'Create Company',
+    'city' => 'City',
 ];

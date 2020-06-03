@@ -6,10 +6,10 @@
         @else
             <h1 class="projtitl col-xl-12 text-center">{{ __('messages.projects') }}</h1>
         @endif
-    <div class="col-xl-12 row justify-content-center">
+    <div class="col-xl-12 row m-0 justify-content-center">
         @foreach ($projs as $proj)
             <div class="card projcards col-xl-3 col-md-5 col-xs-12 m-3">
-                <img class="card-img-top" src="{{ asset('images/emp_images/') }}/{{$proj->img}}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('images/proj_images/') }}/{{$proj->img}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{$proj->nom_projecte}}</h5>
                     <p class="text-left card-text description ">{{$proj->descripcio}}</p>

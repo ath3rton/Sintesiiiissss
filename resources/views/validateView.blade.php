@@ -3,12 +3,14 @@
 <div class="container">
     <div class="col-xl-12 row">
         @foreach ($projs as $proj)
-            <div class="card projcards col-xl-3 col-md-5 col-xs-12 m-3">
-                <img class="card-img-top" src="{{ asset('images/emp_images/') }}/{{$proj->img}}" alt="Card image cap">
+            <div class="card col-xl-3 m-4">
+            <img class="card-img-top" src="{{ asset('images/proj_images/') }}/{{$proj->img}}" alt="Card image cap">
                 <div class="card-body">
+                    
                     <h5 class="card-title">{{$proj->nom_projecte}}</h5>
-                    <p class="text-left card-text description ">{{$proj->descripcio}}</p>
-                    <p class="text-left card-text description ">{{$proj->feedback}}</p>
+                    <p class="card-text description mt-3">{{$proj->descripcio}}</p>
+                    <p class="card-text description mt-3">{{$proj->feedback}}</p>
+                    <a href="{{route('valid',$proj->id)}}" class="m-1 btn btn-primary">{{__('messages.validate')}}</a>
                 </div>
             </div>
         @endforeach

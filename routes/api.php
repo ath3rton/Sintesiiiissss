@@ -33,10 +33,9 @@ Route::put('projmodficar/{proj}', 'ProjectesController@update')->name('projmodfi
 Route::get('projdel/{id}', 'ProjectesController@delete')->name('projdel');
 
 
-
 // crud empresa
 Route::get('empresa', 'EmpresaController@index');
 Route::get('empresa/{empresa}', 'EmpresaController@show');
-Route::post('empresa', 'EmpresaController@store');
+Route::post('empresa', 'EmpresaController@store')->name('creaempresa');
 Route::put('empresa/{empresa}', 'EmpresaController@update');
 Route::delete('empresa/{empresa}', 'EmpresaController@delete');

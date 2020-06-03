@@ -37,10 +37,9 @@ class ProjectesController extends Controller
         $hash = null;
         if($file){
             $hash = Str::random(32).".".$file->getClientOriginalExtension();
-            $destinationPath = 'images/emp_images/';
+            $destinationPath = 'images/proj_images/';
             $file->move($destinationPath, $hash);
         }
-        var_dump($request->all());
         $replaced = array_replace($request->all(), ['img' => $hash]);
         $proj = projectes::create($replaced);
         return redirect()->route('/');

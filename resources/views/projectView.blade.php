@@ -3,14 +3,16 @@
 <script src="{{ asset('js/Chart.min.js') }}" defer></script>
 
 @section('content')
-
-<div class="container">
-    <div class="col-xl-12 row">
-        <div class="card col-xl-12 m-3">
+<div class="d-flex justify-content-center">
+    <div class="container col-xl-8 row m-0 flex-center ">
+        <div class="card col-xl-12">
             <div class="card-body row">
                 <div class="col-xl-8">
-                    <h2 class="m-2"><img class="mr-5" height="50px" width="50px"
-                            src="{{ asset('images/emp_logos').'/'.$emp->logo }}" />{{$proj->nom_projecte}}</h2> 
+                    <div class="row justify-content-center ">
+                        <h2><img  height="50px" width="50px"
+                                src="{{ asset('images/emp_logos').'/'.$emp->logo }}" /></h2> 
+                        <h2 class="text-center align-middle">{{$proj->nom_projecte}}</h2>
+                    </div>
                     <div class="row ml-3">Telf: <a  class="ml-3" href="tel:{{$emp->telf}}">{{$emp->telf}}</a></div>
                     <div class="row ml-3">Web: <a class="ml-3" href="https://{{$emp->web}}">{{$emp->web}}</a></div>
                     <div class="m-3">
@@ -36,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="card col-xl-12 m-3">
+        <div class="card col-xl-12 mt-3">
             <div class="card-body row">
                 <div class="col-xl-8">
                     <h2 class="m-2">{{__('messages.contribution')}}</h2>
@@ -53,6 +55,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 <script type="text/javascript">

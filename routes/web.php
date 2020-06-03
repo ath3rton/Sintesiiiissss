@@ -78,6 +78,13 @@ Route::get('log',function () {
     return view('welcome');
 })->name('log');
 
+Route::get('myemps',function () {
+    $emps =  empreses::where(['owner' => session()->get('user')->id])->paginate(15);
+    
+    return view('empsView',['emps' =>$emps,
+                            'mod' => false]);
+})->name('myemps');
+
 Route::post('registre', [ 'as' => 'registre', 'uses' =>'Auth\RegistreController@registre']);
 
 // logout
@@ -115,7 +122,12 @@ Route::delete('users/{id}', function($id) {
 Route::post('visitor', 'UsersController@visitor')->name('visitor');
 Route::post('claim', 'UsersController@claim')->name('claim');
 //---
+// EMPRESA
 
+Route::get('empcreate', function() {
+    return view('empcView');
+})->name('empcreate');
+//---
 //Projectes
 Route::get('projecte/{id}/{emp}', function($id,$emp) {
     $proj = projectes::find($id);
@@ -151,6 +163,7 @@ Route::get('valid/{id}', function($id) {
     $proj->save();
     return back();
 })->name('valid');
+
 
 Route::get('validate', 'ProjectesController@vali')->name('validate');
 //operacions

@@ -19,6 +19,8 @@ class CreateEmpresesTable extends Migration
             $table->string('nom_empresa');
             $table->string('cif');
             $table->string('ciutat');
+            $table->string('telf')->default('');
+            $table->string('web')->default('');
             $table->string('logo')->default('logo.png');
             $table->bigInteger('owner')->unsigned();
             $table->foreign('owner')->references('id')->on('users');
