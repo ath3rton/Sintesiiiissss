@@ -53,8 +53,7 @@ class RegistreController extends Controller
             'user_mail'=> Request::get('user_mail')
         );
         $us = Users::where($us)->first();
-        $uinf = userinfo::where(['usuari' => $us->id])->first();
-        userinfo::create([
+        $uinf =  userinfo::create([
             'first_name' => Request::get('fname'),
             'last_name' => Request::get('lname'),
             'nickname' => Request::get('fname'),

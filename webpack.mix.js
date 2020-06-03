@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+/* HOLAA */
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

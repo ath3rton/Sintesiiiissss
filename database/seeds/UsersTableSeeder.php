@@ -29,12 +29,17 @@ class UsersTableSeeder extends Seeder
             'rol' => 1
             
         ]);
-
+        userinfo::create([
+            'first_name' => 'admin',
+            'last_name' => 'admin',
+            'nickname' => 'admin',
+            'dni' => $faker->numberBetween($min = 100000000, $max = 99999999),
+            'usuari' => 1
+        ]);
         $password = Hash::make('user');
 
-        for ($i = 2; $i < 30; $i++) {
+        for ($i = 2; $i < 20; $i++) {
             Users::create([
-                'id' => $i,
                 'user_mail' => $faker->email,
                 'user_password' => $password,
                 'rol' => 2

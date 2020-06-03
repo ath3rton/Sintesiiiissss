@@ -126,7 +126,9 @@ Route::get('projecte/{id}/{emp}', function($id,$emp) {
 });
 
 Route::get('projcreate', function() {
-    return view('projectCreate',['proj' => null]);
+    $emps = empreses::where(['owner' => session()->get('user')->id])->get();
+    return view('projectCreate',['proj' => null,
+                                 'emps' => $emps]);
 })->name('projcreate');
 
 Route::get('projmod', function() {
@@ -139,7 +141,8 @@ Route::get('projmod', function() {
 
 Route::get('projmodify/{id}', function($id) {
     $proj = projectes::find($id);
-    return view('projectCreate',['proj' => $proj]);
+    return view('projectCreate',['proj' => $proj,
+                                 'emps' => null]);
 })->name('projmodify');
 
 Route::get('valid/{id}', function($id) {

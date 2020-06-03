@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\projectes;
-use Illuminate\Http\Request;
+use App\empreses;
+use Illuminate\Http\Request as Request;
+use Illuminate\Support\Str;
 
 class ProjectesController extends Controller
 {
@@ -23,12 +25,24 @@ class ProjectesController extends Controller
 
     public function store(Request $request)
     {
-    //     $val = Request::validate([
-    //         'user_mail'=>'required|string',
-    //         'user_password' => 'required|string'
-    //    ]);
-        $proj = projectes::create($request->all());
-        // Aquests json son per retornar l'estat HTTP
+        $val = $request->validate([
+            'nom_projecte'=>'required|string',
+            'img' => 'mimes:jpeg,bmp,png',
+            'objectiu' =>['required','numeric', 'min:1','max:99999999.999', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'fraccio' => ['required','numeric', 'min:1','max:99999999.999', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'descripcio' => 'required|string',
+            'feedback' => 'required|string'
+        ]);
+        $file = $request->file('img','emp_id');
+        $hash = null;
+        if($file){
+            $hash = Str::random(32).".".$file->getClientOriginalExtension();
+            $destinationPath = 'images/emp_images/';
+            $file->move($destinationPath, $hash);
+        }
+        var_dump($request->all());
+        $replaced = array_replace($request->all(), ['img' => $hash]);
+        $proj = projectes::create($replaced);
         return redirect()->route('/');
     }
 

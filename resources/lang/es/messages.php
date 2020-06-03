@@ -47,4 +47,8 @@ return [
     'novalidate' => 'Nada que Validar',
     'myprojects' => 'Mis Proyectos',
     'projects' => 'Proyectos',
+    'pimage' => 'Imagen del Proyecto',
+    'noemps' => 'No Hay Empresas Asociadas a Esta Cuenta',
+    'emps' => 'Empresas',
+    'createemp' => 'Crear Empresa',
 ];

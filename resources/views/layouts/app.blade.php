@@ -29,16 +29,18 @@
                 <div class="bpcolor border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading scolor text-center">{{__('messages.controlpanel')}} </div>
                 <hr class="borderscolor">
-                @if (session()->get('user')->rol<=2)
+                @if (session()->get('user')->rol==1)
                     <div class="list-group list-group-flush">
                         <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
-                        <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.myprojects') }}</a>           
+                        <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.myprojects') }}</a> 
+                        <a href="{{ route('validate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>
+                        <a href="" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createemp') }}</a>          
                     </div>
-                @elseif (session()->get('user')->rol==1)
+                @elseif (session()->get('user')->rol<=2)
                     <div class="list-group list-group-flush">
                         <a href="{{ route('projcreate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createproj') }}</a>
                         <a href="{{ route('projmod') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.myprojects') }}</a>        
-                        <a href="{{ route('validate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>
+                        <a href="" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.createemp') }}</a> 
                     </div>
                 @elseif(session()->get('user')->rol==3)
                     <div class="list-group list-group-flush">

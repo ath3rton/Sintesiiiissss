@@ -16,6 +16,7 @@
                     <p class="text-left card-text description ">{{$proj->feedback}}</p>
                     <div class="progress mb-3">
                         <div class="progress-bar bg-success" role="progressbar" style="width: {{($proj->quantitat/$proj->objectiu)*100}}%;" aria-valuenow="{{$proj->quantitat}}" aria-valuemin="0" aria-valuemax="{{$proj->objectiu}}">{{$proj->quantitat}}</div>
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width: {{100-(($proj->quantitat/$proj->objectiu)*100)}}%;" aria-valuenow="{{$proj->quantitat}}" aria-valuemin="0" aria-valuemax="{{$proj->objectiu}}">{{$proj->objectiu}}</div>
                     </div>
                     <a href="projecte/{{$proj->id}}/{{$proj->emp_id}}" class="m-1 btn btn-primary">{{__('messages.view')}}</a>
                     @if($mod)
@@ -29,7 +30,9 @@
                 </div>
             </div>
         @endforeach
-        <div class="justify-content-center projcards col-xl-3 col-md-5 col-xs-12 m-3"><?php echo $projs->render(); ?></div>
+        <div class="col-xl-12 row justify-content-center">
+            <div class="justify-content-center projcards col-xl-5 col-md-5 col-xs-5 m-3"><?php echo $projs->render(); ?></div>
+        </div>
     </div>
 </div>
 @endsection

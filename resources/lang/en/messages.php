@@ -48,4 +48,8 @@ return [
     'novalidate' => 'Nothing to Validate',
     'myprojects' => 'My Projects',
     'projects' => 'Projects',
+    'pimage' => 'Project Image',
+    'noemps' => 'There Are No Companies Associated to This Account',
+    'emps' => 'Companies',
+    'createemp' => 'Create Company',
 ];

@@ -20,8 +20,9 @@ class CreateProjectesTable extends Migration
             $table->string('feedback');
             $table->decimal('objectiu', 11, 3);
             $table->decimal('fraccio', 11, 3);
-            $table->enum('estat', ['Creat', 'Obert','Bloquejat']);
-            $table->boolean('actiu');
+            $table->enum('estat', ['Creat', 'Obert','Bloquejat'])->default('Creat');
+            $table->boolean('actiu')->default(1);
+            $table->string('img')->default('white-canyon.jpg');
             $table->bigInteger('emp_id')->unsigned();
             $table->foreign('emp_id')->references('id')->on('empreses');
             $table->timestamps();
