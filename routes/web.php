@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 Use App\Users;
 Use App\projectes;
 Use App\empreses;
+Use App\userinfo;
 use Illuminate\Http\Request as Request;
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::get('/', function () {
     $projs = DB::table('projectes')
         ->leftjoin('operacions', 'projectes.id', '=', 'operacions.projecte')
         ->select('projectes.*',DB::raw('sum(operacions.quantitat) as quantitat'))
+        ->where($pro)
         ->groupBy('operacions.projecte')
         ->groupBy('projectes.id')
         ->groupBy('projectes.nom_projecte')
@@ -70,7 +72,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Login forms
 Route::get('welcome', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('log',function () {
     session()->forget('user');
@@ -95,9 +97,13 @@ Route::get('logout',function () {
 })->name('logout');
 
 // CRUD Usuaris
-Route::get('users', function() {
-    return Users::all();
-});
+Route::get('allusers',function(){
+    $us = Users::all();
+    return view('userView',['users' => $us]);
+})->name('allusers');
+
+Route::get('bloqueja/{id}','UsersController@block')->name('bloqueja');
+Route::get('desbloqueja/{id}','UsersController@unlock')->name('desbloqueja');
 
 Route::get('users/{id}', function($id) {
     return Users::find($id);
@@ -120,7 +126,11 @@ Route::delete('users/{id}', function($id) {
 });
 
 Route::post('visitor', 'UsersController@visitor')->name('visitor');
-Route::post('claim', 'UsersController@claim')->name('claim');
+
+Route::get('claim/{id}', function($id){
+    $us = userinfo::find($id);
+    return view('claimUser',['user' => $us]);
+})->name('claim');
 //---
 // EMPRESA
 Route::get('empcreate', function() {
@@ -170,8 +180,16 @@ Route::get('valid/{id}', function($id) {
     return back();
 })->name('valid');
 
-
 Route::get('validate', 'ProjectesController@vali')->name('validate');
+
+Route::post('denuncia', 'ProjectesController@denuncia')->name('denuncia');
+
+Route::get('denuncias', 'ProjectesController@getdenuncies')->name('denuncias');
+
+Route::get('unlock/{id}', 'ProjectesController@unlock')->name('unlock');
+
+Route::get('projdenuncias/{id}', 'ProjectesController@projdenuncias')->name('projdenuncias');
+
 //operacions
 Route::get('getops/{id}','AjaxController@index');
 Route::get('getopsus/{id}','AjaxController@indexus');
@@ -186,3 +204,23 @@ Route::middleware('auth:api')
     });
 
 
+// importacion exportacion
+
+Route::get('export',function(){
+    return view('exportView');
+})->name('export');
+Route::get('import',function(){
+    return view('importView');
+})->name('import');
+// EXPORTS
+Route::get('userexport','ExpImpController@userexport')->name('userexport');
+Route::get('projectexport','ExpImpController@projectexport')->name('projectexport');
+Route::get('companyexport','ExpImpController@companyexport')->name('companyexport');
+Route::get('opsexport','ExpImpController@opsexport')->name('opsexport');
+
+// IMPORTS
+
+Route::post('useri','ExpImpController@userimport')->name('useri');
+Route::post('projecti','ExpImpController@projectimport')->name('projecti');
+Route::post('companyi','ExpImpController@companyimport')->name('companyi');
+Route::post('opsi','ExpImpController@opsimport')->name('opsi');

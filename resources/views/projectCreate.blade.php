@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+@if(session()->has('user'))
+    @if(session()->get('user')->rol!=2)
+        <script>window.location = "/";</script>
+    @endif
+@else
+    <script>window.location = "/";</script>
+@endif
 <div class="container">
 
     <div class="col-xl-12 row">

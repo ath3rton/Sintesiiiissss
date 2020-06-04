@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
+        "maatwebsite/excel": "^3.1",
         "overdesign/cif-generator": "^1.0"
     },
     "require-dev": {

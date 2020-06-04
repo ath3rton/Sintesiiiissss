@@ -19,7 +19,7 @@ class AuthController extends Controller
         );
         $user = Users::where($us)->first();
         $uinf = userinfo::where(['usuari' => $user->id])->first();
-        if($user){
+        if($user->actiu){
             if(Hash::check(Request::get('user_password'), $user->user_password)){
                 session()->put('user', $user);
                 session()->put('uinf', $uinf);

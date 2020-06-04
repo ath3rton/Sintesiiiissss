@@ -1,0 +1,16 @@
+[
+    {
+        "user_mail": "aasdasdasd@sczxc@xxx",
+        "user_password": "$2y$10$KJ1cmM2AmMjYfbMtzfys9.mM9cCu5meOWONJsRTRgqLiZt9vSCh3y",
+        "rol": 2,
+        "created_at": "2020-06-03T09:56:20.000000Z",
+        "updated_at": "2020-06-03T09:56:20.000000Z"
+    },
+	{
+        "user_mail": "xxxxx@sczxc@xxx",
+        "user_password": "$2y$10$KJ1cmM2AmMjYfbMtzfys9.mM9cCu5meOWONJsRTRgqLiZt9vSCh3y",
+        "rol": 2,
+        "created_at": "2020-06-03T09:56:20.000000Z",
+        "updated_at": "2020-06-03T09:56:20.000000Z"
+    }
+]

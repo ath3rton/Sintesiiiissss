@@ -1,0 +1,28 @@
+[
+    {
+        "nom_projecte": "JOEEEEEL",
+        "descripcio": "Ut voluptas maxime quia cumque.",
+        "feedback": "Expedita reiciendis aliquam earum explicabo.",
+        "objectiu": "513528.200",
+        "fraccio": "3309.711",
+        "estat": "Obert",
+        "actiu": 1,
+        "img": "white-canyon.jpg",
+        "emp_id": 30,
+        "created_at": "2020-06-03T11:35:07.000000Z",
+        "updated_at": "2020-06-04T14:37:41.000000Z"
+    },
+    {
+        "nom_projecte": "PUÑALLLLL",
+        "descripcio": "Dicta consequatur non ullam sequi consequuntur.",
+        "feedback": "Qui officiis facere rem.",
+        "objectiu": "809309.072",
+        "fraccio": "7056.461",
+        "estat": "Obert",
+        "actiu": 1,
+        "img": "white-canyon.jpg",
+        "emp_id": 29,
+        "created_at": "2020-06-03T11:35:07.000000Z",
+        "updated_at": "2020-06-04T14:34:20.000000Z"
+    }
+]

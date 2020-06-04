@@ -14,6 +14,25 @@ class UsersController extends Controller
     {
         return Users::all();
     }
+    public function getusers()
+    {
+        $us = Users::all();
+        return response()->json($user, 201);
+    }
+    public function block($id)
+    {
+        $us = Users::where(['id' => $id])->first();
+        $us->actiu = 0;
+        $us->save();
+        return back();
+    }
+    public function unlock($id)
+    {
+        $us = Users::where(['id' => $id])->first();
+        $us->actiu = 1;
+        $us->save();
+        return back();
+    }
 
     public function show(Users $user)
     {

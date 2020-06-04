@@ -32,6 +32,10 @@
                 @if (session()->get('user')->rol==1)
                     <div class="list-group list-group-flush">
                         <a href="{{ route('validate') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.projvalid') }}</a>          
+                        <a href="{{ route('denuncias') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.reports') }}</a>
+                        <a href="{{ route('import') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.imports') }}</a>
+                        <a href="{{ route('export') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.exports') }}</a>
+                        <a href="{{ route('allusers') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.users') }}</a>
                     </div>
                 @elseif (session()->get('user')->rol==2)
                     <div class="list-group list-group-flush">
@@ -43,7 +47,7 @@
                     </div>
                 @elseif(session()->get('user')->rol==3)
                     <div class="list-group list-group-flush">
-                        <a href="{{ route('claim') }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.claim') }}</a>
+                        <a href="{{ route('claim',session()->get('user')->id) }}" class="list-group-item list-group-item-action text-white bpcolor">{{ __('messages.claim') }}</a>
                     </div>
                 @endif
                 </div>
@@ -105,10 +109,10 @@
                                             </div>
                                         </li>
                                         <li class="nav-item  nav-link ml-2 float-left">
-                                            <a  href="/locale/es" class="nav-link"><img width="15px"height="11px" src="{{ asset('images/logo/spain.png') }}"></a>
+                                            <a  href="/locale/es" ><img width="15px"height="11px" src="{{ asset('images/logo/spain.png') }}"></a>
                                         </li>
                                         <li class="nav-item  nav-link ml-2 float-left">
-                                            <a href="/locale/en" class="nav-link"><img width="15px"height="11px" src="{{ asset('images/logo/english.png') }}"></a>
+                                            <a href="/locale/en" ><img width="15px"height="11px" src="{{ asset('images/logo/english.png') }}"></a>
                                         </li>
                                     @endif
                                     

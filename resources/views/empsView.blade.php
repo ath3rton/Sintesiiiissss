@@ -3,6 +3,14 @@
 <script src="{{ asset('js/Chart.min.js') }}" defer></script>
 
 @section('content')
+
+@if(session()->has('user'))
+    @if(session()->get('user')->rol!=2)
+        <script>window.location = "/";</script>
+    @endif
+@else
+    <script>window.location = "/";</script>
+@endif
 <div class="text-center">
     <h1 class="projtitl col-xl-12 text-center">{{ __('messages.emps') }}</h1>
     <div class="col-xl-12 row m-0 justify-content-center">

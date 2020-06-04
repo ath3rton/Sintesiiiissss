@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\projectes;
 use App\empreses;
+use App\denuncies;
+use App\operacions;
 use Illuminate\Http\Request as Request;
 use Illuminate\Support\Str;
 
@@ -11,6 +13,29 @@ class ProjectesController extends Controller
     public function index()
     {
         return projectes::all();
+    }
+    public function unlock($id)
+    {
+        $proj = projectes::where(['id' => $id])->first();
+        $proj->estat = 'Obert';
+        $proj->save();
+        return redirect()->route('denuncias');
+    }
+    public function getdenuncies()
+    {
+        
+        $proj = projectes::where(['estat' => 'Bloquejat'])
+                    ->paginate(15);
+
+        return  view('denunciesView',['projs' =>$proj]);
+    }
+
+    public function projdenuncias($id)
+    {    
+        $proj = projectes::where(['id' => $id])->first();
+        $dens = denuncies::where(['proj' => $id])->get();
+        return  view('projdenunciesView',['proj' =>$proj,
+                                          'denuncies' => $dens]);
     }
 
     public function vali()
@@ -22,7 +47,18 @@ class ProjectesController extends Controller
     {
         return $proj;
     }
-
+    public function denuncia(Request $request)
+    {
+        $denun = new denuncies;
+        $denun->descripcio = $request->get('descripcio');
+        $denun->proj = $request->get('proj');
+        $denun->usuari = $request->get('usuari');
+        $denun->save();
+        $proj = projectes::where(['id' => $request->get('proj')])->first();
+        $proj->estat = 'Bloquejat';
+        $proj->save();
+        return redirect()->route('/');
+    }
     public function store(Request $request)
     {
         $val = $request->validate([

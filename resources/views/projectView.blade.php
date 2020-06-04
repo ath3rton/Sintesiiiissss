@@ -9,9 +9,8 @@
             <div class="card-body row projcontent">
                 <div class="col-xl-8">
                     <div class="row justify-content-center ">
-                        <h2><img  height="50px" width="50px"
-                                src="{{ asset('images/emp_logos').'/'.$emp->logo }}" /></h2> 
-                        <h2 class="text-center align-middle">{{$proj->nom_projecte}}</h2>
+                        <h2><span class="col-xl-6"><img   height="50px" width="50px"
+                                src="{{ asset('images/emp_logos').'/'.$emp->logo }}" /></span><span class="ml-2 col-xl-6">{{$proj->nom_projecte}}</span></h2> 
                     </div>
                     <div class="row ml-3">Telf: <a  class="ml-3" href="tel:{{$emp->telf}}">{{$emp->telf}}</a></div>
                     <div class="row ml-3">Web: <a class="ml-3" href="https://{{$emp->web}}">{{$emp->web}}</a></div>
@@ -30,25 +29,49 @@
                     <hr>
                     <h5>{{__('messages.proddesc')}}:</h5>
                     <p class="ml-3">{{$proj->descripcio}}</p>
-                    <button type="button" class="btn btn-primary filelogo" id="invest">Invertir</button>
+                    
                 </div>
                 <div class="col-xl-4">
                     <h1 class="text-center"></h1>
                     <canvas id="chart-area" width="400" height="400"></canvas>
                 </div>
-            </div>
-            <div class="container col-xl-2 card flex-center amount" style="display:none">
-                <div class="card-body ">
-                    <form action="{{route('invertir',$proj->id)}}"  method="GET">
-                        <label for="fraccio">{{__('messages.amount')}}</label>
-                        <input type="number"  class="form-control" id="quantitat" name="quantitat" step="{{$proj->fraccio}}"/>
-                        <input type="hidden"  class="form-control" id="user" name="user"    value="{{session()->get('user')->id}}"/>
-                        <input type="hidden"  class="form-control" id="projecte" name="projecte" value="{{$proj->id}}"/>
-                        <button type="submit" class="form-control mt-3 filelogo">DONE</button>
-                    </form>
+                <div class="col-xl-12 row">
+                    <div class="col-xl-4">
+                        <img  width="250" height="150" style="background-image:url({{ asset('images/proj_images').'/'.$proj->img }});background-repeat: no-repeat;background-size: cover;" />
+                    </div>
+                    @if(session()->has('user'))
+                        @if(session()->get('user')->rol==2)
+                            <div class="col-xl-4">
+                                <form action="{{route('invertir',$proj->id)}}"  method="GET">
+                                    <label for="fraccio">{{__('messages.amount')}}</label>
+                                    <input type="number"  class="form-control" id="quantitat" name="quantitat" step="{{$proj->fraccio}}"/>
+                                    <input type="hidden"  class="form-control" id="user" name="user"    value="{{session()->get('user')->id}}"/>
+                                    <input type="hidden"  class="form-control" id="projecte" name="projecte" value="{{$proj->id}}"/>
+                                    <button type="submit" class="form-control mt-3 filelogo">{{__('messages.invest')}}</button>
+                                </form>
+                            </div>
+                            <div class="col-xl-4">
+                                <form action="{{route('denuncia')}}"  method="POST">
+                                @csrf   
+                                    <label for="descripcio">{{__('messages.report')}}</label>
+                                    <textarea class="form-control" rows="4" id="descripcio"  name="descripcio" placeholder="{{__('messages.description')}}" required></textarea>
+                                    <input type="hidden"  class="form-control" id="usuari" name="usuari" value="{{session()->get('user')->id}}"/>
+                                    <input type="hidden"  class="form-control" id="proj" name="proj" value="{{$proj->id}}"/>
+                                    <button type="submit" class="form-control mt-3 filelogo">{{__('messages.report')}}</button>
+                                </form>
+                            </div>
+                        @else
+                            <div class="col-xl-4">
+                                <a class="btn btn-primary" href="{{route('welcome')}}">LOGIN</a>
+                            </div>   
+                        @endif
+                    @else
+                        <div class="col-xl-4">
+                            <a class="btn btn-primary" href="{{route('welcome')}}">LOGIN</a>
+                        </div>
+                    @endif
                 </div>
             </div>
-            
             
         </div>
         <div class="card col-xl-12 mt-3">

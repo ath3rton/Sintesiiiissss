@@ -56,5 +56,19 @@ return [
     'city' => 'City',
     'amount' => 'Amount',
     'send' => 'Send',
-    
+    'invest' => 'Invest',
+    'report' => 'Report',
+    'reports' => 'Reports',
+    'investments' => 'Investments',  
+      
+    // Key
+    'createdat' => 'Created at',
+    'unlock' => 'Unlock',
+    'block' => 'Lock',
+    'imports' => 'Imports',
+    'export' => 'Exports',
+    'import' => 'Import',
+    'export' => 'Export',
+    'users' => 'Users',
+    'contribs' => 'Contributions',
 ];

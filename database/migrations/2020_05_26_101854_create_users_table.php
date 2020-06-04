@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('user_mail')->unique();
             $table->string('user_password');
+            $table->boolean('actiu')->default(1);
             $table->bigInteger('rol')->unsigned()->default(3);;
             $table->foreign('rol')->references('id')->on('rols');
             $table->timestamps();

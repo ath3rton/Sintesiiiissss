@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 // crud usuaris
+// REST
 Route::get('users', 'UsersController@index');
 Route::get('users/{user}', 'UsersController@show');
 Route::post('users', 'UsersController@store');
@@ -31,6 +32,7 @@ Route::get('projectes/{projecte}', 'ProjectesController@show');
 Route::post('projadd', 'ProjectesController@store')->name('projadd');
 Route::put('projmodficar/{proj}', 'ProjectesController@update')->name('projmodficar');
 Route::get('projdel/{id}', 'ProjectesController@delete')->name('projdel');
+
 
 
 // crud empresa

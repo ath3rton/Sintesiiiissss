@@ -55,4 +55,19 @@ return [
     'city' => 'Ciudad',
     'amount' => 'Cantidad',
     'send' => 'Enviar',
+    'invest' => 'Invertir',
+    'report' => 'Denunciar',
+    'reports' => 'Denuncias',
+    'investments' => 'Inversiones',
+
+    // Key
+    'createdat' => 'Fecha de Creacion',
+    'unlock' => 'Desbloquear',
+    'block' => 'Bloquear',
+    'imports' => 'Importaciones',
+    'exports' => 'Exportaciones',
+    'import' => 'Importar',
+    'export' => 'Exportar',
+    'users' => 'Usuarios',
+    'contribs' => 'Aportaciones',
 ];
